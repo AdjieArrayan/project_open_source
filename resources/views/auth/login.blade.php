@@ -35,7 +35,7 @@
         <div class="d-flex justify-content-center py-3">
           <a href="/" class="d-flex align-items-center text-decoration-none">
             <img src="{{ asset('style/assets/img/lilith.png') }}" alt="Logo" class="img-fluid me-2" style="height: 50px;">
-            <h2 class="fw-bold text-primary mb-0">CendolNada</h2>
+            <h2 class="fw-bold text-success mb-0">CendolNada</h2>
           </a>
         </div>
 
@@ -73,7 +73,7 @@
               </div>
 
               <!-- Submit Button -->
-              <button class="btn btn-primary w-100 btn-lg mb-3" type="submit" onclick="showAlert('Login berhasil (statis)')">Masuk</button>
+              <button class="btn btn-success w-100 btn-lg mb-3" type="submit" onclick="showAlert('Login berhasil (statis)')">Masuk</button>
             </form>
 
             <!-- Register Link -->

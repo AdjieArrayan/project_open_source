@@ -52,7 +52,7 @@
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
             <img src="{{asset('style/assets/img/lilith.png')}}" alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block dropdown-toggle ps-2">Suaminya Lilith</span>
+            <span class="d-none d-md-block dropdown-toggle ps-2 text-success">Suaminya Lilith</span>
           </a><!-- End Profile Image Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
@@ -89,49 +89,41 @@
 
   </header><!-- End Header -->
 
-  <!-- ======= Sidebar ======= -->
-  <aside id="sidebar" class="sidebar">
+    <!-- ======= Sidebar ======= -->
+    <aside id="sidebar" class="sidebar">
 
-    <ul class="sidebar-nav" id="sidebar-nav">
+        <ul class="sidebar-nav" id="sidebar-nav">
 
         <li class="nav-item">
-          <a class="nav-link collapsed" href="dashboard">
+            <a class="nav-link collapsed" href="dashboard">
             <i class="bi bi-grid"></i>
             <span>Dashboard</span>
-          </a>
-        </li><!-- End Dashboard Nav -->
-
-
-    <ul class="sidebar-nav" id="sidebar-nav">
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="menuPenjualan">
-          <i class="bi bi-grid"></i>
-          <span>List Menu</span>
-        </a>
-      </li><!-- End Dashboard Nav -->
-
-    <ul class="sidebar-nav" id="sidebar-nav">
+            </a>
+        </li>
 
         <li class="nav-item">
-          <a class="nav-link collapsed" href="management">
+            <a class="nav-link collapsed" href="menuPenjualan">
+            <i class="bi bi-list-ul"></i>
+            <span>List Menu</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="management">
             <i class="bi bi-people"></i>
             <span>Manajemen Penjualan</span>
-          </a>
-        </li><!-- End Dashboard Nav -->
-    </ul>
-
-    <ul class="sidebar-nav" id="sidebar-nav">
+            </a>
+        </li>
 
         <li class="nav-item">
-          <a class="nav-link collapsed" href="index.html">
+            <a class="nav-link collapsed" href="index.html">
             <i class="bi bi-box-arrow-right"></i>
             <span>Log Out</span>
-          </a>
-        </li><!-- End Dashboard Nav -->
+            </a>
+        </li>
 
-
-  </aside><!-- End Sidebar-->
+        </ul>
+    </aside>
 
  @yield('breadcrumbs')
 
@@ -148,6 +140,25 @@
   </footer><!-- End Footer -->
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <style>
+    /* Ubah warna tulisan sidebar jadi hijau */
+    .sidebar .nav-link span {
+      color: #28a745; /* hijau bootstrap */
+      font-weight: 500;
+    }
+
+    /* Kalau ingin ikon juga hijau */
+    .sidebar .nav-link i {
+      color: #28a745;
+    }
+
+    /* Efek hover biar sedikit lebih jelas */
+    .sidebar .nav-link:hover span,
+    .sidebar .nav-link:hover i {
+      color: #28a745;
+    }
+  </style>
 
   <!-- Vendor JS Files -->
   <script src="{{asset('style/assets/vendor/apexcharts/apexcharts.min.js') }}"></script>

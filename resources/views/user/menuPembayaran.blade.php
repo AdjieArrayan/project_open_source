@@ -4,8 +4,8 @@
 
 @section('breadcrumbs')
 <main id="main" class="main">
-    <div class="pagetitle">
-        <h1>Pilih Metode Pembayaran</h1>
+    <div class="pagetitle text-center">
+        <h1>Pilih Metode Pembayaran</h1> <br>
     </div>
 @endsection
 

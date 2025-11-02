@@ -17,7 +17,7 @@
             <!-- Logo -->
             <img src="{{ asset('style/assets/img/lilith.png') }}" alt="Logo" class="mb-2" style="width: 60px; height: 60px; object-fit: contain;">
 
-            <h5 class="card-title fw-bold mb-2">CendolNada</h5>
+            <h5 class="card-title fw-bold mb-2 text-success">CendolNada</h5>
             <p class="text-muted mb-3" style="font-size: 14px;">Jl. Mawar No. 12, Karawang</p>
             <hr>
 
@@ -62,7 +62,7 @@
                 <h5>Pembayaran Berhasil</h5>
                 <p class="text-muted">Transaksi telah diselesaikan.</p>
                 <a href="menuPenjualan">
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Tutup</button>
+                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">Tutup</button>
                 </a>
             </div>
         </div>

@@ -4,9 +4,8 @@
 
 @section('breadcrumbs')
 <main id="main" class="main">
-    <div class="pagetitle">
-        <h1>Halo, Suaminya Lilith</h1>
-        <h1>Selamat Datang di Cendol Nada</h1><br>
+    <div class="pagetitle text-center">
+        <h1>Tentukan Pesanan Anda</h1> <br>
     </div>
 @endsection
 
@@ -28,7 +27,7 @@
                     <!-- Detail -->
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h4 class="card-title fw-bold">Cendol Original</h4>
+                            <h4 class="card-title fw-bold text-success">Cendol Original</h4>
                             <p class="card-text text-muted">
                                 Cendol segar dengan santan dan gula merah pilihan.
                                 Nikmati sensasi manis dan gurih yang menyegarkan setiap hari.
@@ -69,7 +68,7 @@
 
                             <!-- Tombol dengan modal -->
                             <div class="d-flex justify-content-center mt-5">
-                                <button type="button" class="btn btn-primary px-5 py-2" data-bs-toggle="modal" data-bs-target="#konfirmasiModal" onclick="updateModal()">
+                                <button type="button" class="btn btn-success px-5 py-2" data-bs-toggle="modal" data-bs-target="#konfirmasiModal" onclick="updateModal()">
                                     Beli Sekarang
                                 </button>
                             </div>
@@ -120,7 +119,7 @@
 
                 <div class="modal-footer justify-content-center">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                <button type="button" class="btn btn-primary">Ya, Beli</button>
+                <button type="button" class="btn btn-success">Ya, Beli</button>
                 </div>
             </div>
             </div>
