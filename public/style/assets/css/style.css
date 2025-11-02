@@ -456,13 +456,13 @@ h6 {
 
 .nav-tabs-bordered .nav-link:hover,
 .nav-tabs-bordered .nav-link:focus {
-  color: #4154f1;
+  color: #28a745;
 }
 
 .nav-tabs-bordered .nav-link.active {
   background-color: #fff;
-  color: #4154f1;
-  border-bottom: 2px solid #4154f1;
+  color: #28a745;
+  border-bottom: 2px solid #28a745;
 }
 
 /*--------------------------------------------------------------
@@ -788,7 +788,7 @@ h6 {
 .sidebar-nav .nav-heading {
   font-size: 11px;
   text-transform: uppercase;
-  color: #899bbd;
+  color: #28a745;
   font-weight: 600;
   margin: 10px 0 5px 15px;
 }

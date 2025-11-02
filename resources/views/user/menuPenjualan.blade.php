@@ -11,6 +11,16 @@
 @endsection
 
 @section('content')
+
+<div class="loading-page">
+    <div class="img-container">
+      <img src="{{ asset('/style/assets/img/lilith.png') }}" alt="Pengingat Obat" />
+    </div><br>
+    <div class="name-container">
+      <div class="logo-name">Penyegar Dahaga Anda</div>
+    </div>
+</div>
+
 <section class="section dashboard">
     <div class="row">
 

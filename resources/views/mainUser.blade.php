@@ -40,7 +40,7 @@
     <div class="d-flex align-items-center justify-content-between">
       <a href="index.html" class="logo d-flex align-items-center">
         <img src="{{asset('style/assets/img/logo.jpg')}}" alt="">
-        <span class="d-none d-lg-block text-primary">CendolNada</span>
+        <span class="d-none d-lg-block text-success">CendolNada</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
@@ -57,7 +57,7 @@
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
-              <h6>Manusia Pentung</h6>
+              <h6>Suaminya Lilith</h6>
               <span>Bandar Obat</span>
             </li>
             <li>
@@ -95,7 +95,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
         <li class="nav-item">
-          <a class="nav-link collapsed" href="userdashboard">
+          <a class="nav-link collapsed" href="dashboard">
             <i class="bi bi-grid"></i>
             <span>Dashboard</span>
           </a>
