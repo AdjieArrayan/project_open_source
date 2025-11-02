@@ -39,7 +39,7 @@
 
     <div class="d-flex align-items-center justify-content-between">
       <a href="index.html" class="logo d-flex align-items-center">
-        <img src="{{asset('style/assets/img/logo.jpg')}}" alt="">
+        <img src="{{asset('style/assets/img/lilith.png')}}" alt="">
         <span class="d-none d-lg-block text-success">CendolNada</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
@@ -109,7 +109,7 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="management">
+            <a class="nav-link collapsed" href="manajemenPenjualan">
             <i class="bi bi-people"></i>
             <span>Manajemen Penjualan</span>
             </a>

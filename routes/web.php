@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 
 //Buat Admin
 
+    Route::get('/manajemenPenjualan', function () {
+        return view('admin/manajemenPenjualan');
+    });
+
 //Buat User/Karyawan
 
     Route::get('/', function () {
