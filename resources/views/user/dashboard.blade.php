@@ -27,22 +27,60 @@
 
         <!-- Total Penjualan -->
         <div class="col-lg-3 col-md-6">
-          <div class="card info-card sales-card shadow-sm">
+            <div class="card info-card sales-card shadow-sm">
             <div class="card-body">
-              <h5 class="card-title">Total Penjualan</h5>
-              <div class="d-flex align-items-center">
+                <div class="d-flex justify-content-between align-items-center">
+                <h5 class="card-title mb-0">Total Penjualan</h5>
+
+                <!-- Tombol 3 titik -->
+                <div class="dropdown">
+                    <button class="btn btn-light btn-sm border-0" type="button" id="dropdownMenuButton"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-three-dots-vertical"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end shadow-sm" aria-labelledby="dropdownMenuButton">
+                    <li>
+                        <a class="dropdown-item {{ $periode == 'hari' ? 'active fw-bold' : '' }}"
+                        href="{{ route('dashboard', ['periode' => 'hari']) }}">
+                        Hari Ini
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item {{ $periode == 'minggu' ? 'active fw-bold' : '' }}"
+                        href="{{ route('dashboard', ['periode' => 'minggu']) }}">
+                        7 Hari Terakhir
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item {{ $periode == 'dua_minggu' ? 'active fw-bold' : '' }}"
+                        href="{{ route('dashboard', ['periode' => 'dua_minggu']) }}">
+                        14 Hari Terakhir
+                        </a>
+                    </li>
+                    </ul>
+                </div>
+                </div>
+
+                <div class="d-flex align-items-center mt-3">
                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center bg-success bg-opacity-10" style="width:50px; height:50px;">
-                  <i class="bi bi-cash-stack text-success fs-4"></i>
+                    <i class="bi bi-cash-stack text-success fs-4"></i>
                 </div>
                 <div class="ps-3">
-                  <h6>Rp 2.450.000</h6>
-                  <span class="text-success small pt-1 fw-bold">+12%</span>
-                  <span class="text-muted small pt-2 ps-1">dari minggu lalu</span>
+                    <h6>Rp {{ number_format($totalPeriode, 0, ',', '.') }}</h6>
+                    @if ($persentasePeningkatan >= 0)
+                    <span class="text-success small pt-1 fw-bold">+{{ number_format($persentasePeningkatan, 1) }}%</span>
+                    @else
+                    <span class="text-danger small pt-1 fw-bold">{{ number_format($persentasePeningkatan, 1) }}%</span>
+                    @endif
+                    <span class="text-muted small pt-2 ps-1">
+                    dari {{ $labelPeriode == 'Hari Ini' ? 'kemarin' : 'periode sebelumnya' }}
+                    </span>
                 </div>
-              </div>
+                </div>
             </div>
-          </div>
-        </div><!-- End Total Penjualan -->
+            </div>
+        </div>
+        <!-- End Total Penjualan -->
 
         <!-- Transaksi Hari Ini -->
         <div class="col-lg-3 col-md-6">
@@ -54,14 +92,15 @@
                   <i class="bi bi-cart-check text-success fs-4"></i>
                 </div>
                 <div class="ps-3">
-                  <h6>32</h6>
+                  <h6>{{ $transaksiHariIni }}</h6>
                   <span class="text-success small pt-1 fw-bold">+5</span>
                   <span class="text-muted small pt-2 ps-1">transaksi baru</span>
                 </div>
               </div>
             </div>
           </div>
-        </div><!-- End Transaksi Hari Ini -->
+        </div>
+        <!-- End Transaksi Hari Ini -->
 
         <!-- Produk Terlaris -->
         <div class="col-lg-3 col-md-6">
@@ -73,8 +112,13 @@
                   <i class="bi bi-star-fill text-success fs-4"></i>
                 </div>
                 <div class="ps-3">
-                  <h6>Cendol Original</h6>
-                  <span class="text-muted small pt-2 ps-1">120 penjualan</span>
+                    @if($produkTerlaris)
+                    <h6>{{ $produkTerlaris->menu->nama_menu }}</h6>
+                    <span class="text-muted small pt-2 ps-1">{{ $produkTerlaris->total_terjual }} penjualan</span>
+                  @else
+                    <h6>-</h6>
+                    <span class="text-muted small pt-2 ps-1">Belum ada data</span>
+                  @endif
                 </div>
               </div>
             </div>
@@ -91,7 +135,7 @@
                   <i class="bi bi-graph-up text-success fs-4"></i>
                 </div>
                 <div class="ps-3">
-                  <h6>Rp 7.800.000</h6>
+                  <h6>Rp {{ number_format($pendapatanBulanIni, 0, ',', '.') }}</h6>
                   <span class="text-muted small pt-2 ps-1">update terakhir hari ini</span>
                 </div>
               </div>
@@ -104,7 +148,10 @@
       <!-- Aktivitas / Penjualan Terbaru -->
       <div class="card recent-sales overflow-auto shadow-sm">
         <div class="card-body">
-          <h5 class="card-title">Penjualan Terbaru</h5>
+            <h5 class="card-title">Penjualan Terbaru
+                <small class="text-muted">(menampilkan {{ $penjualanTerbaru->count() }} data)</small>
+            </h5>
+
 
           <table class="table table-borderless datatable">
             <thead class="table-success">
@@ -116,24 +163,18 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>2025-11-01</td>
-                <td>Cendol Original</td>
-                <td>3</td>
-                <td>Rp 15.000</td>
-              </tr>
-              <tr>
-                <td>2025-11-01</td>
-                <td>Es Dawet</td>
-                <td>2</td>
-                <td>Rp 10.000</td>
-              </tr>
-              <tr>
-                <td>2025-10-31</td>
-                <td>Cendol Durian</td>
-                <td>5</td>
-                <td>Rp 40.000</td>
-              </tr>
+                @forelse($penjualanTerbaru as $item)
+                  <tr>
+                    <td>{{ \Carbon\Carbon::parse($item->transaction->tanggal_transaksi)->format('Y-m-d') }}</td>
+                    <td>{{ $item->menu->nama_menu }}</td>
+                    <td>{{ $item->jumlah }}</td>
+                    <td>Rp {{ number_format($item->subtotal, 0, ',', '.') }}</td>
+                  </tr>
+                @empty
+                  <tr>
+                    <td colspan="4" class="text-center">Belum ada data penjualan</td>
+                  </tr>
+                @endforelse
             </tbody>
           </table>
 

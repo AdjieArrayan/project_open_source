@@ -33,7 +33,7 @@
 
         <!-- Logo Section -->
         <div class="d-flex justify-content-center py-3">
-          <a href="/" class="d-flex align-items-center text-decoration-none">
+          <a href="dashboard" class="d-flex align-items-center text-decoration-none">
             <img src="{{ asset('style/assets/img/lilith.png') }}" alt="Logo" class="img-fluid me-2" style="height: 50px;">
             <h2 class="fw-bold text-success mb-0">CendolNada</h2>
           </a>
@@ -49,37 +49,30 @@
               <p class="text-muted small">Masuk untuk melanjutkan</p>
             </div>
 
-            <!-- Login Form -->
-            <form class="needs-validation" novalidate onsubmit="return false;">
-
-
-                <!-- Buka comment kalau pengen ada login make google -->
-              <!-- Login with Google
-              <button class="btn btn-outline-light text-dark border border-primary w-100 btn-lg d-flex align-items-center justify-content-center mb-4" type="button" onclick="showAlert('Login Google belum tersedia.')">
-                <i class="bi bi-google me-2 text-danger"></i>Lanjut Menggunakan Google
-              </button> -->
+            <form class="needs-validation" novalidate method="POST" action="{{ route('login.post') }}">
+                @csrf
 
               <!-- Input Fields -->
               <div class="form-floating mb-3">
-                <input type="text" id="email" class="form-control rounded-3" placeholder="Email" required>
+                <input type="text" id="email" name="email" class="form-control rounded-3" placeholder="Email" required>
                 <label for="email"><i class="bi bi-person-circle"></i> Email</label>
                 <div class="invalid-feedback">Masukkan email Anda.</div>
               </div>
 
               <div class="form-floating mb-3">
-                <input type="password" id="password" class="form-control rounded-3" placeholder="Password" required>
+                <input type="password" id="password" name="password" class="form-control rounded-3" placeholder="Password" required>
                 <label for="password"><i class="bi bi-lock-fill"></i> Kata Sandi</label>
                 <div class="invalid-feedback">Masukkan kata sandi Anda!</div>
               </div>
 
               <!-- Submit Button -->
-              <button class="btn btn-success w-100 btn-lg mb-3" type="submit" onclick="showAlert('Login berhasil (statis)')">Masuk</button>
+              <button class="btn btn-success w-100 btn-lg mb-3" type="submit">Masuk</button>
             </form>
 
             <!-- Register Link -->
             <div class="text-center mt-2">
               <p class="small mb-0">Belum punya akun?
-                <a href="register" class="text-decoration-none fw-bold text-primary" onclick="showAlert('Halaman pendaftaran belum tersedia.')">Daftar Sekarang</a>
+                <a href="register" class="text-decoration-none fw-bold text-primary">Daftar Sekarang</a>
               </p>
             </div>
           </div>

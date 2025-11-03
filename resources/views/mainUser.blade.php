@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>@yield('title') Admin Dashboard-Medicare</title>
+  <title>@yield('title') CendolNada</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -74,13 +74,6 @@
               <hr class="dropdown-divider">
             </li>
 
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="#">
-                <i class="bi bi-box-arrow-right"></i>
-                <span>Sign Out</span>
-              </a>
-            </li>
-
           </ul><!-- End Profile Dropdown Items -->
         </li><!-- End Profile Nav -->
 
@@ -95,32 +88,35 @@
         <ul class="sidebar-nav" id="sidebar-nav">
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="dashboard">
+            <a class="nav-link collapsed" href="{{ url('dashboard') }}">
             <i class="bi bi-grid"></i>
             <span>Dashboard</span>
             </a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="menuPenjualan">
+            <a class="nav-link collapsed" href=""{{ url('menuPenjualan') }}">
             <i class="bi bi-list-ul"></i>
             <span>List Menu</span>
             </a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="manajemenPenjualan">
+            <a class="nav-link collapsed" href=""{{ url('management') }}">
             <i class="bi bi-people"></i>
             <span>Manajemen Penjualan</span>
             </a>
         </li>
 
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="index.html">
-            <i class="bi bi-box-arrow-right"></i>
-            <span>Log Out</span>
-            </a>
-        </li>
+        <form action="{{ route('logout') }}" method="POST">
+            @csrf
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="login">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Log Out</span>
+                </a>
+            </li>
+        </form>
 
         </ul>
     </aside>

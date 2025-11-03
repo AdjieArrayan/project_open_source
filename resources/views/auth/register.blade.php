@@ -32,7 +32,7 @@
 
         <!-- Logo Section -->
         <div class="d-flex justify-content-center py-3">
-          <a href="/" class="d-flex align-items-center text-decoration-none">
+          <a href="dashboard" class="d-flex align-items-center text-decoration-none">
             <img src="{{ asset('style/assets/img/lilith.png') }}" alt="Logo" class="img-fluid me-2" style="height: 50px;">
             <h2 class="fw-bold text-success mb-0">CendolNada</h2>
           </a>
@@ -48,31 +48,26 @@
               <p class="text-center small text-muted">Masukkan data pribadi Anda untuk membuat akun</p>
             </div>
 
-            <!-- Buka COmment kalau pengen login Google -->
-            <!-- Login with Google
-            <button class="btn btn-outline-light text-dark border border-primary w-100 btn-lg d-flex align-items-center justify-content-center mb-4" type="button" onclick="showAlert('Login Google belum tersedia.')">
-              <i class="bi bi-google me-2 text-danger"></i>Lanjut Menggunakan Google
-            </button> -->
-
             <!-- Form -->
-            <form class="needs-validation" novalidate onsubmit="return false;">
+            <form class="needs-validation" method="POST" action="{{ route('register.store') }}">
+                @csrf
 
               <div class="form-group mb-3">
                 <label for="yourName" class="form-label">Nama Pengguna</label>
-                <input type="text" id="yourName" class="form-control" required>
+                <input type="text" name="name" id="yourName" class="form-control" required>
                 <div class="invalid-feedback">Harap masukkan nama pengguna Anda!</div>
               </div>
 
               <div class="form-group mb-3">
                 <label for="yourEmail" class="form-label">Email</label>
-                <input type="email" id="yourEmail" class="form-control" required>
+                <input type="email" name="email" id="yourEmail" class="form-control" required>
                 <div class="invalid-feedback">Harap masukkan alamat email yang valid!</div>
               </div>
 
               <div class="form-group mb-3">
                 <label for="yourPassword" class="form-label">Password</label>
                 <div class="input-group">
-                  <input type="password" id="yourPassword" class="form-control" required>
+                  <input type="password" name="password" id="yourPassword" class="form-control" required>
                   <button class="btn btn-outline-secondary" type="button" onclick="togglePassword()">
                     <i class="bi bi-eye"></i>
                   </button>
@@ -82,19 +77,19 @@
 
               <div class="form-group mb-3">
                 <label for="yourPasswordConfirmation" class="form-label">Konfirmasi Password</label>
-                <input type="password" id="yourPasswordConfirmation" class="form-control" required>
+                <input type="password" name="password_confirmation" id="yourPasswordConfirmation" class="form-control" required>
                 <div class="invalid-feedback">Harap konfirmasi kata sandi Anda!</div>
               </div>
 
               <!-- Tombol Kirim -->
               <div class="col-12 mb-3">
-                <button class="btn btn-success w-100" type="submit" onclick="showAlert('Akun berhasil dibuat (statis)')">Buat Akun</button>
+                <button class="btn btn-success w-100" type="submit">Buat Akun</button>
               </div>
 
               <!-- Link Login -->
               <div class="col-12 text-center">
                 <p class="small mb-0">Sudah punya akun?
-                  <a href="login" class="text-decoration-none fw-bold text-primary" onclick="showAlert('Halaman login belum tersedia.')">Masuk di sini</a>
+                  <a href="{{ url('login') }}" class="text-decoration-none fw-bold text-primary">Masuk di sini</a>
                 </p>
               </div>
             </form>
@@ -115,10 +110,27 @@
     </div>
   </footer>
 
+    <!-- Modal Sukses -->
+    <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow">
+            <div class="modal-header bg-success text-white">
+            <h5 class="modal-title" id="successModalLabel">Berhasil!</h5>
+            </div>
+            <div class="modal-body text-center">
+            <i class="bi bi-check-circle-fill text-success" style="font-size: 4rem;"></i>
+            <p class="mt-3 mb-0 fs-5">Akun kamu berhasil dibuat! Kamu akan diarahkan ke halaman login.</p>
+            </div>
+        </div>
+        </div>
+    </div>
+
   <!-- Vendor JS Files -->
   <script src="style/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="style/assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+  <!-- Script Modal -->
   <script>
     function togglePassword() {
       const field = document.getElementById("yourPassword");
@@ -128,6 +140,19 @@
     function showAlert(msg) {
       alert(msg);
     }
+
+    @if(session('success'))
+        Swal.fire({
+            icon: 'success',
+            title: 'Berhasil!',
+            text: 'Akun kamu berhasil dibuat! Mengarahkan ke halaman login...',
+            timer: 2500,
+            showConfirmButton: false
+        }).then(() => {
+            window.location.href = "{{ route('login') }}";
+        });
+    @endif
   </script>
+
 </body>
 </html>
