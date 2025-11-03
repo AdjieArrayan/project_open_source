@@ -149,7 +149,6 @@
       <div class="card recent-sales overflow-auto shadow-sm">
         <div class="card-body">
             <h5 class="card-title">Penjualan Terbaru
-                <small class="text-muted">(menampilkan {{ $penjualanTerbaru->count() }} data)</small>
             </h5>
 
 

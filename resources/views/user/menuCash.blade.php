@@ -21,20 +21,18 @@
             <p class="text-muted mb-3" style="font-size: 14px;">Jl. Mawar No. 12, Karawang</p>
             <hr>
 
-            <p class="text-muted" style="font-size: 13px;">{{ date('d M Y, H:i') }}</p>
+            <p class="text-muted" style="font-size: 13px;">{{ \Carbon\Carbon::parse($transaksi->tanggal_transaksi)->format('d M Y, H:i') }}</p>
+
             <div class="text-start">
                 <table class="table table-borderless mb-0">
                     <tbody>
+                        @foreach($menus as $item)
                         <tr>
-                            <td>Cendol Original</td>
-                            <td class="text-center">4x</td>
-                            <td class="text-end">Rp 24.000</td>
+                            <td>{{ $item['nama_menu'] }}</td>
+                            <td class="text-center">{{ $item['jumlah'] }}x</td>
+                            <td class="text-end">Rp {{ number_format($item['subtotal'], 0, ',', '.') }}</td>
                         </tr>
-                        <tr>
-                            <td>Es Lemon Segar</td>
-                            <td class="text-center">1x</td>
-                            <td class="text-end">Rp 10.000</td>
-                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
@@ -42,7 +40,7 @@
             <hr>
             <div class="d-flex justify-content-between">
                 <strong>Total</strong>
-                <strong>Rp 34.000</strong>
+                <strong>Rp {{ number_format($total, 0, ',', '.') }}</strong>
             </div>
             <p class="mt-1 text-muted" style="font-size: 13px;">Metode: Cash</p>
 
@@ -61,7 +59,7 @@
                 <i class="bi bi-check-circle-fill text-success fs-1 mb-3"></i>
                 <h5>Pembayaran Berhasil</h5>
                 <p class="text-muted">Transaksi telah diselesaikan.</p>
-                <a href="menuPenjualan">
+                <a href="{{ route('menuPenjualan') }}">
                     <button type="button" class="btn btn-success" data-bs-dismiss="modal">Tutup</button>
                 </a>
             </div>

@@ -7,16 +7,25 @@ use App\Http\Controllers\MenuController;
 use App\Http\Controllers\PenjualanController;
 
 // Auth Routes
-Route::get('/', [AuthController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [AuthController::class, 'login'])->name('login.post');
-Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
-Route::post('/register', [AuthController::class, 'register'])->name('register.store');
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+    Route::get('/', [AuthController::class, 'showLoginForm'])->name('login');
+    Route::post('/login', [AuthController::class, 'login'])->name('login.post');
+    Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
+    Route::post('/register', [AuthController::class, 'register'])->name('register.store');
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Dashboard — semua user
-Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::get('/menuPenjualan', [MenuController::class, 'index']);
+
+    Route::middleware(['auth'])->group(function () {
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+        Route::get('/menu-penjualan', [PenjualanController::class, 'index'])->name('menuPenjualan');
+        Route::post('/konfirmasi-pembelian', [PenjualanController::class, 'konfirmasiPembelian'])->name('konfirmasiPembelian');
+        Route::post('/menu-pembayaran', [PenjualanController::class, 'menuPembayaran'])->name('menuPembayaran');
+        Route::post('/menu-cash', [PenjualanController::class, 'menuCash'])->name('menuCash');
+        Route::post('/menu-cashless', [PenjualanController::class, 'menuCashless'])->name('menuCashless');
+        Route::post('/konfirmasi-cashless', [PenjualanController::class, 'konfirmasiCashless'])->name('konfirmasiCashless');
+
 });
 
 // Hanya admin

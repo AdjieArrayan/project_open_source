@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Transaction;
 use App\Models\TransactionDetail;
-use App\Models\Menu;
 use Carbon\Carbon;
 use DB;
 

@@ -88,21 +88,21 @@
         <ul class="sidebar-nav" id="sidebar-nav">
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="{{ url('dashboard') }}">
+            <a class="nav-link collapsed" href="{{ route('dashboard') }}">
             <i class="bi bi-grid"></i>
             <span>Dashboard</span>
             </a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href=""{{ url('menuPenjualan') }}">
+            <a class="nav-link collapsed" href="{{ route('menuPenjualan') }}">
             <i class="bi bi-list-ul"></i>
             <span>List Menu</span>
             </a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href=""{{ url('management') }}">
+            <a class="nav-link collapsed" href="{{ url('management') }}">
             <i class="bi bi-people"></i>
             <span>Manajemen Penjualan</span>
             </a>
