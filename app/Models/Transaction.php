@@ -17,6 +17,10 @@ class Transaction extends Model
         'tanggal_transaksi',
     ];
 
+    protected $casts = [
+        'tanggal_transaksi' => 'datetime',
+    ];
+
     // Relasi ke TransactionDetail
     public function details()
     {
