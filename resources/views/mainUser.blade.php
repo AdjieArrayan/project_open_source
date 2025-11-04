@@ -52,29 +52,30 @@
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
             <img src="{{asset('style/assets/img/lilith.png')}}" alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block dropdown-toggle ps-2 text-success">Suaminya Lilith</span>
+            <span class="d-none d-md-block dropdown-toggle ps-2 text-success">{{ Auth::user()->name ?? 'Guest' }}</span>
           </a><!-- End Profile Image Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
-              <h6>Suaminya Lilith</h6>
-              <span>Bandar Obat</span>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
+              <h6>{{ Auth::user()->name ?? 'Guest' }}</h6>
+              <span>{{ Auth::user()->role ?? 'Tidak Diketahui' }}</span>
             </li>
 
+            <li><hr class="dropdown-divider"></li>
+
+            <!-- Contoh tambahan: tombol logout -->
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="profile">
-                <i class="bi bi-person"></i>
-                <span>My Profile</span>
+              <a class="dropdown-item d-flex align-items-center" href="{{ route('logout') }}"
+                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Keluar</span>
               </a>
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+              </form>
             </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
+          </ul>
 
-          </ul><!-- End Profile Dropdown Items -->
         </li><!-- End Profile Nav -->
 
       </ul>
@@ -101,12 +102,30 @@
             </a>
         </li>
 
+        @if(auth()->user()->role === 'admin')
+
         <li class="nav-item">
-            <a class="nav-link collapsed" href="{{ url('management') }}">
+            <a class="nav-link {{ Request::is('admin/role*') ? '' : 'collapsed' }}" href="{{ route('manajemen.penjualan') }}">
             <i class="bi bi-people"></i>
             <span>Manajemen Penjualan</span>
             </a>
         </li>
+
+        <li class="nav-item">
+            <a class="nav-link {{ Request::is('admin/role*') ? '' : 'collapsed' }}" href="{{ route('manajemen.role') }}">
+                <i class="bi bi-people"></i>
+                <span>Manajemen Role</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link {{ Request::is('admin/role*') ? '' : 'collapsed' }}" href="{{ route('manajemen.role') }}">
+                <i class="bi bi-people"></i>
+                <span>Manajemen Menu</span>
+            </a>
+        </li>
+
+        @endif
 
         <form action="{{ route('logout') }}" method="POST">
             @csrf

@@ -3,9 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\MenuController;
 use App\Http\Controllers\PenjualanController;
-
+use App\Http\Controllers\ManajemenPenjualanController;
+use App\Http\Controllers\ManajemenRoleController;
+use App\Http\Controllers\Admin\RekapExportController;
 // Auth Routes
 
     Route::get('/', [AuthController::class, 'showLoginForm'])->name('login');
@@ -15,7 +16,6 @@ use App\Http\Controllers\PenjualanController;
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Dashboard — semua user
-
     Route::middleware(['auth'])->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
@@ -25,13 +25,22 @@ use App\Http\Controllers\PenjualanController;
         Route::post('/menu-cash', [PenjualanController::class, 'menuCash'])->name('menuCash');
         Route::post('/menu-cashless', [PenjualanController::class, 'menuCashless'])->name('menuCashless');
         Route::post('/konfirmasi-cashless', [PenjualanController::class, 'konfirmasiCashless'])->name('konfirmasiCashless');
+});
+
+// Hanya untuk admin
+
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/manajemen-penjualan', [ManajemenPenjualanController::class, 'index'])->name('manajemen.penjualan');
+    Route::get('/rekap/harian', [RekapExportController::class, 'exportHarian'])->name('rekap.harian');
+    Route::get('/rekap/bulanan', [RekapExportController::class, 'exportBulanan'])->name('rekap.bulanan');
+
+    Route::get('/manajemen-role', [ManajemenRoleController::class, 'index'])->name('manajemen.role');
+    Route::post('/manajemen-role/update/{id}', [ManajemenRoleController::class, 'update'])->name('admin.role.update');
+    Route::delete('/manajemen-role/delete/{id}', [ManajemenRoleController::class, 'destroy'])->name('admin.role.delete');
 
 });
 
-// Hanya admin
-Route::middleware(['auth', 'role:admin'])->group(function () {
-    Route::get('/management', [PenjualanController::class, 'index']);
-});
+
 
 
 
