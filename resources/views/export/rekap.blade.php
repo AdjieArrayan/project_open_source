@@ -22,4 +22,8 @@
             </tr>
         @endforeach
     </tbody>
+<<<<<<< HEAD
 </table>
+=======
+</table>
+>>>>>>> 695ff00fc8d74ed3d45b4c2880871e041b8e6c8a
