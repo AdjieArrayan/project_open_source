@@ -118,7 +118,7 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link {{ Request::is('admin/role*') ? '' : 'collapsed' }}" href="{{ route('manajemen.role') }}">
+            <a class="nav-link {{ Request::is('admin/role*') ? '' : 'collapsed' }}" href="{{ route('manajemen.menu') }}">
                 <i class="bi bi-people"></i>
                 <span>Manajemen Menu</span>
             </a>

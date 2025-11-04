@@ -1,6 +1,6 @@
 @extends('mainUser')
 
-@section('title', 'Manajemen Penjualan')
+@section('title', '')
 
 @section('breadcrumbs')
 <main id="main" class="main">
@@ -115,7 +115,6 @@
         </div>
     </div>
 
-    <!-- Rekap Penjualan -->
     <div class="card shadow-sm mt-4">
         <div class="card-body">
             <h5 class="card-title">Rekap Penjualan</h5>
@@ -138,9 +137,27 @@
         </div>
     </div>
 
+    <div class="card shadow-sm mt-4">
+        <div class="card-body">
+            <h5 class="card-title">Rekap Penjualan</h5>
+            <p class="text-muted small">Klik tombol di bawah untuk melihat rekap.</p>
+
+            <div class="d-flex flex-wrap gap-3">
+                <a href="{{ route('rekap.harian') }}" class="btn btn-success">
+                  <i class="bi bi-calendar-day me-2"></i>Rekap Harian
+                </a>
+                <a href="{{ route('rekap.bulanan') }}" class="btn btn-success">
+                  <i class="bi bi-calendar3 me-2"></i>Rekap Bulanan
+                </a>
+              </div>
+
+
+            <div id="hasilRekap" class="p-3 border rounded bg-light d-none">
+                <h6 class="fw-bold text-success">Hasil Rekap:</h6>
+                <p id="rekapText" class="mb-0"></p>
+            </div>
+        </div>
+    </div>
+</main>
 </section>
-<<<<<<< HEAD
 @endsection
-=======
-@endsection
->>>>>>> 695ff00fc8d74ed3d45b4c2880871e041b8e6c8a

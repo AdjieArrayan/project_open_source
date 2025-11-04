@@ -1,12 +1,12 @@
 @extends('mainUser')
 
-@section('title', 'Manajemen Penjualan')
+@section('title', '')
 
 @section('breadcrumbs')
 <main id="main" class="main">
     <div class="pagetitle text-center">
-        <h1>Manajemen Role</h1>
-            <p class="text-muted">Kelola hak akses dan data pengguna</p>
+        <h1>Manajemen Menu</h1>
+        <p class="text-muted">Kelola daftar menu yang tersedia</p>
         <br>
     </div>
 @endsection
@@ -23,67 +23,114 @@
 </div>
 
 <section class="section dashboard">
+    <div class="card shadow-sm border-0">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mt-3 mb-3">
+                <h5 class="card-title mb-0">Daftar Menu</h5>
+                <a href="{{ route('tambah.menu') }}" class="btn btn-success">
+                    + Tambah Menu
+                </a>
+            </div>
 
-    <section class="section dashboard">
-        <div class="card shadow-sm border-0">
-            <div class="card-body">
-                <h5 class="card-title">Daftar Pengguna</h5>
+            @if(session('success'))
+                <div class="alert alert-success">{{ session('success') }}</div>
+            @endif
 
-                @if(session('success'))
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        {{ session('success') }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                    </div>
-                @endif
+            <div class="table-responsive">
+                <table class="table table-bordered align-middle text-center">
+                    <thead class="table-success">
+                        <tr>
+                            <th>#</th>
+                            <th>Gambar</th>
+                            <th>Nama Menu</th>
+                            <th>Deskripsi</th>
+                            <th>Harga</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($menus as $index => $menu)
+                        <tr>
+                            <td>{{ $index + 1 }}</td>
+                            <td>
+                                @if($menu->gambar)
+                                    <img src="{{ asset('storage/'.$menu->gambar) }}" width="60" height="60" class="rounded">
+                                @else
+                                    <span class="text-muted">Tidak ada</span>
+                                @endif
+                            </td>
+                            <td>{{ $menu->nama_menu }}</td>
+                            <td>{{ Str::limit($menu->deskripsi, 40) }}</td>
+                            <td>Rp {{ number_format($menu->harga, 0, ',', '.') }}</td>
+                            <td>
+                                <a href="{{ route('edit.menu', $menu->id) }}" class="btn btn-warning btn-sm mb-1">Edit</a>
 
-                <div class="table-responsive">
-                    <table class="table table-bordered align-middle">
-                        <thead class="table-success text-center">
-                            <tr>
-                                <th>#</th>
-                                <th>Nama</th>
-                                <th>Deskripi</th>
-                                <th>Role</th>
-                                <th>Password (Opsional)</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($users as $index => $user)
-                            <tr>
-                                {{-- Form Update --}}
-                                <form action="{{ route('admin.role.update', $user->id) }}" method="POST">
-                                    @csrf
-                                    <td class="text-center">{{ $index + 1 }}</td>
-                                    <td><input type="text" name="name" value="{{ $user->name }}" class="form-control" required></td>
-                                    <td><input type="email" name="email" value="{{ $user->email }}" class="form-control" required></td>
-                                    <td>
-                                        <select name="role" class="form-select" required>
-                                            <option value="user" {{ $user->role === 'user' ? 'selected' : '' }}>User</option>
-                                            <option value="admin" {{ $user->role === 'admin' ? 'selected' : '' }}>Admin</option>
-                                        </select>
-                                    </td>
-                                    <td>
-                                        <input type="password" name="password" class="form-control" placeholder="Kosongkan jika tidak diubah">
-                                    </td>
-                                    <td class="text-center">
-                                        <button type="submit" class="btn btn-sm btn-success mb-1 w-100">Simpan</button>
-                                </form>
-
-                                {{-- Form Delete (harus di luar form update) --}}
-                                <form action="{{ route('admin.role.delete', $user->id) }}" method="POST" onsubmit="return confirm('Yakin ingin hapus user ini?');">
+                                <form id="delete-form-{{ $menu->id }}"  action="{{ route('hapus.menu', $menu->id) }}" method="POST" class="d-inline delete-form">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-sm btn-danger w-100">Hapus</button>
+                                    <button type="button" class="btn btn-danger btn-sm"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#confirmDeleteModal"
+                                        data-form-id="{{ $menu->id }}">
+                                        Hapus
+                                    </button>
                                 </form>
-                                    </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
-    </section>
+    </div>
+</main>
 </section>
+
+{{-- Modal konfirmasi hapus --}}
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-danger">
+            <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title">Konfirmasi Hapus</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                Apakah kamu yakin ingin menghapus menu ini? Data tidak dapat dikembalikan.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Ya, Hapus</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        let formToDelete = null;
+
+        // Ketika tombol Hapus di baris diklik — simpan referensi form (atau id)
+        document.querySelectorAll('[data-bs-target="#confirmDeleteModal"]').forEach(function(button) {
+            button.addEventListener('click', function () {
+                const id = button.getAttribute('data-form-id');
+                // Cari form by id yang sudah kita pasang di template
+                formToDelete = document.getElementById('delete-form-' + id);
+            });
+        });
+
+        // Tombol konfirmasi modal: submit form yang sudah disimpan
+        const confirmDeleteBtn = document.getElementById('confirmDeleteBtn');
+        if (confirmDeleteBtn) {
+            confirmDeleteBtn.addEventListener('click', function () {
+                if (formToDelete) {
+                    formToDelete.submit();
+                } else {
+                    // fallback debugging: coba cari form by attribute
+                    console.warn('Tidak menemukan form delete yang akan disubmit.');
+                }
+            });
+        }
+    });
+    </script>
+
 @endsection

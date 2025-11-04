@@ -48,6 +48,7 @@
             </div>
         @endforelse
     </div>
+</main>
 </section>
 
 <!-- Bottom Bar (muncul saat ada produk dipilih) -->

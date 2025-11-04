@@ -1,6 +1,6 @@
 @extends('mainUser')
 
-@section('title', 'Manajemen Role')
+@section('title', '')
 
 @section('breadcrumbs')
 <main id="main" class="main">
@@ -12,6 +12,15 @@
 @endsection
 
 @section('content')
+
+<div class="loading-page">
+    <div class="img-container">
+      <img src="{{ asset('/style/assets/img/lilith.png') }}" alt="Pengingat Obat" />
+    </div><br>
+    <div class="name-container">
+      <div class="logo-name">Penyegar Dahaga Anda</div>
+    </div>
+</div>
 
 <section class="section dashboard">
     <div class="card shadow-sm border-0">
@@ -83,6 +92,7 @@
             </div>
         </div>
     </div>
+</main>
 </section>
 
 {{-- === Modal Konfirmasi Simpan === --}}
@@ -159,8 +169,5 @@
         });
     });
 </script>
-<<<<<<< HEAD
+
 @endsection
-=======
-@endsection
->>>>>>> 695ff00fc8d74ed3d45b4c2880871e041b8e6c8a

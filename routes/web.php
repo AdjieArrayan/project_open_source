@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\ManajemenPenjualanController;
 use App\Http\Controllers\ManajemenRoleController;
+use App\Http\Controllers\MenuController;
 use App\Http\Controllers\Admin\RekapExportController;
 // Auth Routes
 
@@ -38,12 +39,14 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::post('/manajemen-role/update/{id}', [ManajemenRoleController::class, 'update'])->name('admin.role.update');
     Route::delete('/manajemen-role/delete/{id}', [ManajemenRoleController::class, 'destroy'])->name('admin.role.delete');
 
+    Route::get('/manajemen-menu', [MenuController::class, 'index'])->name('manajemen.menu');
+    Route::get('/manajemen-menu/tambah', [MenuController::class, 'createMenu'])->name('tambah.menu');
+    Route::post('/manajemen-menu/simpan', [MenuController::class, 'storeMenu'])->name('simpan.menu');
+    Route::get('/manajemen-menu/edit/{id}', [MenuController::class, 'editMenu'])->name('edit.menu');
+    Route::post('/manajemen-menu/update/{id}', [MenuController::class, 'updateMenu'])->name('update.menu');
+    Route::delete('/manajemen-menu/hapus/{id}', [MenuController::class, 'destroyMenu'])->name('hapus.menu');
+
 });
-
-
-
-
-
 
 //Route Login
 
