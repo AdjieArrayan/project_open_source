@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <link href="{{asset('style/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">

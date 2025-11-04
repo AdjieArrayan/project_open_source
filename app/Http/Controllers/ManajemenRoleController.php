@@ -36,4 +36,8 @@ class ManajemenRoleController extends Controller
         User::destroy($id);
         return back()->with('success', 'User berhasil dihapus.');
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 695ff00fc8d74ed3d45b4c2880871e041b8e6c8a
