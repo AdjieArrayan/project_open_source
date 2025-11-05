@@ -1,6 +1,6 @@
 @extends('mainUser')
 
-@section('title', 'Pembayaran Cash')
+@section('title', '')
 
 @section('breadcrumbs')
 <main id="main" class="main">
@@ -15,9 +15,9 @@
         <div class="card-body text-center">
 
             <!-- Logo -->
-            <img src="{{ asset('style/assets/img/lilith.png') }}" alt="Logo" class="mb-2" style="width: 60px; height: 60px; object-fit: contain;">
+            <img src="{{ asset('style/assets/img/logo.png') }}" alt="Logo" class="mb-2" style="width: 60px; height: 60px; object-fit: contain;"> <br>
 
-            <h5 class="card-title fw-bold mb-2 text-success">CendolNada</h5>
+            <img src="{{ asset('style/assets/img/CendolNada.png') }}" alt="Logo" class="img-fluid me-2" style="height: 50px;">
             <p class="text-muted mb-3" style="font-size: 14px;">Jl. Mawar No. 12, Karawang</p>
             <hr>
 
@@ -49,6 +49,7 @@
             </button>
         </div>
     </div>
+</main>
 </section>
 
 <!-- Modal -->

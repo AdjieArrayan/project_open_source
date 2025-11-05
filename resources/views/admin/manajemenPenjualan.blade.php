@@ -11,16 +11,6 @@
 @endsection
 
 @section('content')
-
-<div class="loading-page">
-    <div class="img-container">
-      <img src="{{ asset('/style/assets/img/lilith.png') }}" alt="Pengingat Obat" />
-    </div><br>
-    <div class="name-container">
-      <div class="logo-name">Penyegar Dahaga Anda</div>
-    </div>
-</div>
-
 <section class="section dashboard">
 
     <!-- Ringkasan Cepat -->
@@ -117,22 +107,13 @@
 
     <div class="card shadow-sm mt-4">
         <div class="card-body">
-            <h5 class="card-title">Rekap Penjualan</h5>
-            <p class="text-muted small">Klik tombol di bawah untuk melihat rekap.</p>
+            <h5 class="card-title">Tambahkan Menu QRIS Anda</h5>
+            <p class="text-muted small">Upload Foto QRISmu untuk menambahkan metode pembayaran cashless.</p>
 
             <div class="d-flex flex-wrap gap-3">
-                <a href="{{ route('rekap.harian') }}" class="btn btn-success">
-                  <i class="bi bi-calendar-day me-2"></i>Rekap Harian
+                <a href="{{ route('upload.qris') }}" class="btn btn-success">
+                    <i class="bi bi-qr-code me-2"></i>Upload QRIS
                 </a>
-                <a href="{{ route('rekap.bulanan') }}" class="btn btn-success">
-                  <i class="bi bi-calendar3 me-2"></i>Rekap Bulanan
-                </a>
-              </div>
-
-
-            <div id="hasilRekap" class="p-3 border rounded bg-light d-none">
-                <h6 class="fw-bold text-success">Hasil Rekap:</h6>
-                <p id="rekapText" class="mb-0"></p>
             </div>
         </div>
     </div>

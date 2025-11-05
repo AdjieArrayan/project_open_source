@@ -38,8 +38,8 @@
 
     <div class="d-flex align-items-center justify-content-between">
       <a href="index.html" class="logo d-flex align-items-center">
-        <img src="{{asset('style/assets/img/lilith.png')}}" alt="">
-        <span class="d-none d-lg-block text-success">CendolNada</span>
+        <img src="{{asset('style/assets/img/logo.png')}}" alt="">
+        <img src="{{asset('style/assets/img/CendolNada.png')}}" alt="">
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
@@ -50,7 +50,7 @@
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="{{asset('style/assets/img/lilith.png')}}" alt="Profile" class="rounded-circle">
+            <img src="{{asset('style/assets/img/logo.png')}}" alt="Profile" class="rounded-circle">
             <span class="d-none d-md-block dropdown-toggle ps-2 text-success">{{ Auth::user()->name ?? 'Guest' }}</span>
           </a><!-- End Profile Image Icon -->
 
@@ -89,7 +89,7 @@
 
         <li class="nav-item">
             <a class="nav-link collapsed" href="{{ route('dashboard') }}">
-            <i class="bi bi-grid"></i>
+            <i class="bi bi-speedometer2"></i>
             <span>Dashboard</span>
             </a>
         </li>
@@ -105,21 +105,21 @@
 
         <li class="nav-item">
             <a class="nav-link {{ Request::is('admin/role*') ? '' : 'collapsed' }}" href="{{ route('manajemen.penjualan') }}">
-            <i class="bi bi-people"></i>
+            <i class="bi bi-cash-stack"></i>
             <span>Manajemen Penjualan</span>
             </a>
         </li>
 
         <li class="nav-item">
             <a class="nav-link {{ Request::is('admin/role*') ? '' : 'collapsed' }}" href="{{ route('manajemen.role') }}">
-                <i class="bi bi-people"></i>
+                <i class="bi bi-person-gear"></i>
                 <span>Manajemen Role</span>
             </a>
         </li>
 
         <li class="nav-item">
             <a class="nav-link {{ Request::is('admin/role*') ? '' : 'collapsed' }}" href="{{ route('manajemen.menu') }}">
-                <i class="bi bi-people"></i>
+                <i class="bi bi-card-checklist"></i>
                 <span>Manajemen Menu</span>
             </a>
         </li>

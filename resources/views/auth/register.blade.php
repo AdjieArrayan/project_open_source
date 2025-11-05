@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Medipulse - Register</title>
+  <title>CendolNada - Register</title>
 
   <link rel="icon" href="style/assets/img/logo-nobg.png" type="image/png">
   <link href="style/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -33,8 +33,8 @@
         <!-- Logo Section -->
         <div class="d-flex justify-content-center py-3">
           <a href="dashboard" class="d-flex align-items-center text-decoration-none">
-            <img src="{{ asset('style/assets/img/lilith.png') }}" alt="Logo" class="img-fluid me-2" style="height: 50px;">
-            <h2 class="fw-bold text-success mb-0">CendolNada</h2>
+            <img src="{{ asset('style/assets/img/logo.png') }}" alt="Logo" class="img-fluid me-2" style="height: 50px;">
+            <img src="{{ asset('style/assets/img/CendolNada.png') }}" alt="Logo" class="img-fluid me-2" style="height: 50px;">
           </a>
         </div>
 

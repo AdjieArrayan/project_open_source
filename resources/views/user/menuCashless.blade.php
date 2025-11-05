@@ -1,6 +1,6 @@
 @extends('mainUser')
 
-@section('title', 'Pembayaran Cashless')
+@section('title', '')
 
 @section('breadcrumbs')
 <main id="main" class="main">
@@ -17,10 +17,10 @@
             <h5 class="card-title mb-3 fw-semibold">QRIS Pembayaran</h5>
 
             <!-- Gambar QR -->
-            <img src="{{ asset('style/assets/img/QRIS.png') }}"
-                 alt="QRIS"
-                 class="img-fluid rounded"
-                 style="width: 100%; height: auto; border-radius: 12px;">
+            <img src="{{ asset('uploads/qris/QRIS.png') }}?v={{ time() }}"
+                alt="QRIS"
+                class="img-fluid rounded"
+                style="width: 100%; height: auto; border-radius: 12px;">
 
             <p class="mt-3 text-muted small mb-3">
                 Silakan scan untuk melanjutkan pembayaran.
@@ -30,6 +30,11 @@
             <button type="button" class="btn btn-success w-100 mt-3" data-bs-toggle="modal" data-bs-target="#confirmModal">
                 Konfirmasi Pembayaran
             </button>
+
+        </main>
+        </section>
+@endsection
+
 
             <!-- Modal -->
             <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
@@ -47,9 +52,6 @@
                     </div>
                 </div>
             </div>
-
-        </section>
-@endsection
 
 <style>
 .card {

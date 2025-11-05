@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\RekapExportController;
 // Auth Routes
 
     Route::get('/', [AuthController::class, 'showLoginForm'])->name('login');
+    Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login.form');
     Route::post('/login', [AuthController::class, 'login'])->name('login.post');
     Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
     Route::post('/register', [AuthController::class, 'register'])->name('register.store');
@@ -34,6 +35,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/manajemen-penjualan', [ManajemenPenjualanController::class, 'index'])->name('manajemen.penjualan');
     Route::get('/rekap/harian', [RekapExportController::class, 'exportHarian'])->name('rekap.harian');
     Route::get('/rekap/bulanan', [RekapExportController::class, 'exportBulanan'])->name('rekap.bulanan');
+    Route::get('/upload-qris', [ManajemenPenjualanController::class, 'showQrisUpload'])->name('upload.qris');
+    Route::post('/upload-qris', [ManajemenPenjualanController::class, 'uploadQris'])->name('store.qris');
 
     Route::get('/manajemen-role', [ManajemenRoleController::class, 'index'])->name('manajemen.role');
     Route::post('/manajemen-role/update/{id}', [ManajemenRoleController::class, 'update'])->name('admin.role.update');

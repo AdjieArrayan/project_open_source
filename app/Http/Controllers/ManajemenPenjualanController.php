@@ -70,4 +70,43 @@ class ManajemenPenjualanController extends Controller
             'produk_terjual' => $produkTerjual ?? 0
         ]);
     }
+
+    public function showQrisUpload()
+    {
+        $qrisPath = public_path('uploads/qris/QRIS.png');
+
+        // Kalau file belum ada, biar nanti tampil gambar default
+        $fileExists = file_exists($qrisPath);
+
+        $qrisImage = $fileExists ? asset('uploads/qris/QRIS.png') . '?v=' . time() // tambahkan cache-buster
+        : asset('style/assets/img/QRIS.png'); // default
+
+        return view('admin.uploadQris', compact('fileExists'));
+    }
+
+    public function uploadQris(Request $request)
+    {
+        $request->validate([
+            'qris_image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+        ]);
+
+        $uploadPath = public_path('uploads/qris');
+
+        if (!file_exists($uploadPath)) {
+            mkdir($uploadPath, 0777, true);
+        }
+
+        // Hapus file lama
+        $files = glob($uploadPath . '/*');
+        foreach ($files as $file) {
+            if (is_file($file)) unlink($file);
+        }
+
+        // Upload file baru
+        $file = $request->file('qris_image');
+        $file->move($uploadPath, 'QRIS.png');
+
+        return redirect()->route('manajemen.penjualan')->with('success', 'QRIS berhasil diperbarui!');
+    }
+
 }

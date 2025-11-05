@@ -1,6 +1,6 @@
 @extends('mainUser')
 
-@section('title', 'Konfirmasi Pembelian')
+@section('title', '')
 
 @section('breadcrumbs')
 <main id="main" class="main">
@@ -251,5 +251,6 @@ window.updateModalSemua = function () {
     });
     </script>
 
+</main>
 </section>
 @endsection

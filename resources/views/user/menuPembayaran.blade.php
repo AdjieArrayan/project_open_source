@@ -1,6 +1,6 @@
 @extends('mainUser')
 
-@section('title', 'Pilih Metode Pembayaran')
+@section('title', '')
 
 @section('breadcrumbs')
 <main id="main" class="main">
@@ -50,5 +50,6 @@
     </div>
 
   </div>
+</main>
 </section>
 @endsection
