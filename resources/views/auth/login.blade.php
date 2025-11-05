@@ -8,7 +8,7 @@
 
   <title>CendolNada - Login</title>
 
-  <link rel="icon" href="style/assets/img/logo-nobg.png" type="image/png">
+  <link rel="icon" href="style/assets/img/logo.png" type="image/png">
   <link href="style/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Nunito:300,400,600,700|Poppins:300,400,500,600,700" rel="stylesheet">
