@@ -148,9 +148,11 @@ project_open_source/
 | Nama                    | Peran                          |
 | ----------------------- | ------------------------------ |
 | **Adjie Arrayan**       |      FullStack Developer       |
-| **Rasyid Iskandar**     |             UI UX              |
-| **Suci Dwi Pratiwi**    |             UI UX              |
-| **Hanum Surya H.**      |          Data Analyst          |
+| **Rasyid Iskandar**     |             UI/UX              |
+| **Suci Dwi Pratiwi**    |             UI/UX              |
+| **Hanum Surya H.**      |         System Analyst         |
+| **Vian Haryadi**        |             UI/UX              |
+| **Fergi Ar Farid Afif** |             UI/UX              |
 
 ## 📄 6. Lisensi
 
