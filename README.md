@@ -21,6 +21,8 @@ Aplikasi **CendolNada** adalah sistem penjualan berbasis web yang dikembangkan m
 ---
 
 ## 📂 2. Struktur Direktori Utama
+```
+.
 project_open_source/
 ├── app/
 │ ├── Http/
@@ -83,7 +85,7 @@ project_open_source/
 | | └── UserSeeder
 │
 └── composer.json # File dependency Composer
-
+```
 
 ---
 
