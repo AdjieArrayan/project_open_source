@@ -151,7 +151,7 @@ project_open_source/
 | ----------------------- | ------------------------------ |
 | **Adjie Arrayan**       |      FullStack Developer       |
 | **Rasyid Iskandar**     |             UI/UX              |
-| **Suci Dwi Pratiwi**    |             UI/UX              |
+| **Suci Dwi Pratiwi**    |         System Analyst         |
 | **Hanum Surya H.**      |         System Analyst         |
 | **Vian Haryadi**        |             UI/UX              |
 | **Fergi Ar Farid Afif** |             UI/UX              |
